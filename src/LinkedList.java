@@ -3,7 +3,7 @@
  * Date: January 22, 2017
  */
 import java.util.Arrays;
-import  java.util.Arrays.*;
+
 public class LinkedList {
 	
 	private Node header;
@@ -39,15 +39,18 @@ public class LinkedList {
 			size++;
 		}
 	}
-	public void removeFirst(){
+	public int removeFirst(){
+		int deletedNote = header.data;
 		if(size != 0){
 			header = header.next;
 			size--;
 		}
-
+		return deletedNote;
 	}
-	public void removeLast(){
+	public int removeLast(){
+		int deletedNode = 0;
 		if(size == 1){
+			deletedNode = header.data;
 			header.next = null;
 			lastnode = header;
 			size--;
@@ -55,22 +58,28 @@ public class LinkedList {
 		else if(size != 0){
 			Node temp = header;
 			int count = 1;
-			while (count != size-1 ){
+			while (count != size-1){
 				temp = temp.next;
 				count++;
 			}
+			deletedNode = temp.next.data;
 			temp.next = lastnode;
 			size--;
 		}
-
+		return deletedNode;
 	}
 	public void insertAt(int index, Integer data){
-		Node temp = header;
-		Node n = new Node(data);
-		int count = 1;
 		if(index == 1)
 			prepend(data);
+		else if(index == size+1)
+			append(data);
+		else if(index > size +1 || index == 0){
+			throw new NullPointerException("Unable to insert: Index "+index+" Not Found");
+		}
 		else{
+			int count = 1;
+			Node n = new Node(data);
+			Node temp = header;
 			while(count != index-1){
 				temp = temp.next;
 				count++;
@@ -81,15 +90,32 @@ public class LinkedList {
 		}
 	}
 	
+	public int deleteAt(int index){
+		int deletedNode = 0;
+		if(index == 1)
+			deletedNode = removeFirst();
+		else if(index == size)
+			deletedNode = removeLast();
+		else if(index > size || index == 0)
+			throw new NullPointerException("Unable to delete: Index "+index+" Not Found");
+		else{
+			int count = 1;
+			Node temp = header;
+			while(count != index-1){
+				temp = temp.next;
+				count++;
+			}
+			deletedNode = temp.next.data;
+			temp.next = temp.next.next;
+			size--;
+		}
+		return deletedNode;
+	}
+	
 	public int getSize(){
 		return size;
 	}
-	public Integer getFirstNodeData(){
-		return header.data;
-	}
-	public Integer getLastNodeData(){
-		return lastnode.data;
-	}
+
 	public String toString(){
 		Node n = header;
 		String temp = "";

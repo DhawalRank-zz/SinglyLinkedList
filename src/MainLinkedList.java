@@ -6,35 +6,28 @@
 public class MainLinkedList {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+
 		LinkedList ll = new LinkedList();
-		System.out.println("Size is: "+ll.getSize());
-		System.out.println("Data: "+ll.toString());
-		ll.prepend(10);
-		System.out.println("Size is: "+ll.getSize());
-		System.out.println("Data: "+ll.toString());
-		ll.prepend(11);
-		System.out.println("Size is: "+ll.getSize());
-		System.out.println("Data: "+ll.toString());
-		ll.prepend(12);
-		System.out.println("Size is: "+ll.getSize());
-		System.out.println("Data: "+ll.toString());
-		ll.append(13);
-		System.out.println("Size is: "+ll.getSize());
-		System.out.println("Data: "+ll.toString());
-		ll.removeLast();
-		System.out.println("Data: "+ll.toString());
-		ll.prepend(10);
-		System.out.println("Data: "+ll.toString());
-		ll.removeFirst();
-		System.out.println("Data: "+ll.toString());
 		ll.append(10);
-		System.out.println("Data: "+ll.toString());
-		ll.insertAt(1, 14);
-		System.out.println("Data: "+ll.toString());
-		LinkedList sortedList = ll.getSortedList();
-		System.out.println("Sorted List: "+sortedList.toString());
+		ll.append(14);
+		ll.append(9);
+		ll.append(15);
+		ll.append(1);
+		ll.insertAt(1, 20);
+		System.out.println("Linked List:"+ll.toString());
+		ll.insertAt(7, 54);
+		System.out.println("Linked List:"+ll.toString());
+		ll.insertAt(4, 17);
+		System.out.println("Linked List:"+ll.toString());
+		LinkedList sortedList = new LinkedList();
+		sortedList = ll.getSortedList();
+		System.out.println("Sorted Linked List:"+sortedList.toString());
+		System.out.println(sortedList.deleteAt(1));
+		System.out.println("Sorted Linked List:"+sortedList.toString());
+		System.out.println(sortedList.deleteAt(7));
+		System.out.println("Sorted Linked List:"+sortedList.toString());
+		System.out.println(sortedList.deleteAt(3));
+		System.out.println("Sorted Linked List:"+sortedList.toString());
 	}
 
 }
