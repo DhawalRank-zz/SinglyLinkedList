@@ -111,10 +111,6 @@ public class LinkedList {
 		}
 		return deletedNode;
 	}
-	
-	public int getSize(){
-		return size;
-	}
 
 	public String toString(){
 		Node n = header;
@@ -142,5 +138,21 @@ public class LinkedList {
 			i++;
 		}
 		return sortedList; 
+	}
+	
+	public Integer[] toArray(){
+		Node n = header;
+		int i = 0;
+		Integer a[] = new Integer[size];
+		while(i != size){
+			a[i] = n.data;
+			i++;
+			n = n.next;
+		}
+		return a;
+	}
+	
+	public int getSize(){
+		return size;
 	}
 }
