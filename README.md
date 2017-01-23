@@ -11,3 +11,4 @@
   7. toString()
   8. getSortedList()
   9. getSize()
+  10. toArray()
